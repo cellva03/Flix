@@ -10,10 +10,10 @@ export default function Featured({ type, setGenre }) {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/movies/random?type=${type}`, {
+        const res = await axios.get(`https://aniflix-server.onrender.com/api/movies/random?type=${type}`, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNTZjNWY5OTM1ZDJhMmIxY2ZhOTAzNSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzMzMDE4OSwiZXhwIjoxNjMzNzYyMTg5fQ.o2txN4GmG9WU5loN5qYAKr_e3PIAR8okMmAzCNpZrH0",
+              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setContent(res.data[0]);
@@ -24,7 +24,7 @@ export default function Featured({ type, setGenre }) {
     getRandomContent();
   }, [type]);
 
-  console.log(content);
+  // console.log(content); 
   return (
     <div className="featured">
       {type && (

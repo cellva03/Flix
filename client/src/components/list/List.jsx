@@ -12,7 +12,7 @@ export default function List({ list }) {
   const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
 
   const listRef = useRef();
-  console.log(list)
+  // console.log(list) 
 
   const handleClick = (direction) => {
     setIsMoved(true);

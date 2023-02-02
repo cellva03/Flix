@@ -4,6 +4,7 @@ import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthActions";
+import Avatar from '../../assets/man.png'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,7 +36,7 @@ const Navbar = () => {
           <Search className="icon" />
           <Notifications className="icon" />
           <img
-            src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/104113705/original/6076831db34315e45bd2a31a9d79bb7b91d48e04/design-flat-style-minimalist-avatar-of-you.jpg"
+            src={Avatar}
             alt=""
           />
           <div className="profile">

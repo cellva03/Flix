@@ -13,7 +13,7 @@ const Series = ({type}) => {
   useEffect(() => {
     const getRandomLists = async () => {
       try {
-        const res = await axios.get(`https://ne-tflix.herokuapp.com/api/lists?type=${type}`,
+        const res = await axios.get(`https://aniflix-server.onrender.com/api/lists?type=${type}`,
           {
             headers: {
               token:

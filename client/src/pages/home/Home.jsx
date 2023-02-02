@@ -8,22 +8,23 @@ import axios from "axios";
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
-  console.log(lists)
+  // console.log(lists)
 
   useEffect(() => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${
+          `https://aniflix-server.onrender.com/api/lists${type ? "?type=" + type : ""}${
             genre ? "&genre=" + genre : ""
           }`,
           {
             headers: {
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNTZjNWY5OTM1ZDJhMmIxY2ZhOTAzNSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzMzMDE4OSwiZXhwIjoxNjMzNzYyMTg5fQ.o2txN4GmG9WU5loN5qYAKr_e3PIAR8okMmAzCNpZrH0"/*+JSON.parse(localStorage.getItem("user")).accessToken*/,
+              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );
+        console.log(res.data);
         setLists(res.data);
       } catch (err) {
         console.log(err);
@@ -37,7 +38,7 @@ const Home = ({ type }) => {
       <Navbar />
       <Featured type={type} setGenre={setGenre} />
       {lists.map((list) => (
-        <List list={list} />
+        <List list={list} key={list._id}/>
       ))}
     </div>
   );

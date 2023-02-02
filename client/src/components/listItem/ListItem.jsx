@@ -16,10 +16,10 @@ export default function ListItem({ index, item }) {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get("/movies/find/" + item, {
+        const res = await axios.get("https://aniflix-server.onrender.com/api/movies/find/" + item, {
           headers: {
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNTZjNWY5OTM1ZDJhMmIxY2ZhOTAzNSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzMzMzMDE4OSwiZXhwIjoxNjMzNzYyMTg5fQ.o2txN4GmG9WU5loN5qYAKr_e3PIAR8okMmAzCNpZrH0",
+            "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setMovie(res.data);
